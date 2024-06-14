@@ -5,9 +5,19 @@
 @section('content')
 <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
     <div class="container">
-
+        @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show " role="alert">{{session('success')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        @if(session()->has('loginError'))
+        <div class="alert alert-danger alert-dismissible fade show " role="alert">{{session('loginError')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
         <div class="row justify-content-center form-bg-image"
             data-background-lg="{{asset('volt/assets/img/illustrations/signin.svg')}}">
+
             <div class="col-12 d-flex align-items-center justify-content-center">
                 <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
                     <div class="text-center text-md-center mb-4 mt-md-0">
@@ -17,7 +27,7 @@
                         <!-- Form -->
                         @csrf
                         <div class="form-group mb-4">
-                            <label for="email">Your Email</label>
+                            <label for="name">Your name</label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1">
                                     <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20"
@@ -28,9 +38,9 @@
                                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                                     </svg>
                                 </span>
-                                <input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" required
-                                    autofocus>
-                                @error('email')
+                                <input class="form-control" type="name" name="name" id="name" value="{{ old('name') }}"
+                                    required autofocus>
+                                @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

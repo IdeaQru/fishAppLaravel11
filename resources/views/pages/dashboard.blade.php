@@ -17,6 +17,7 @@
                             <th>Longitude</th>
                             <th>Latitude</th>
                             <th>Status</th>
+                            <th>Expired</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -28,6 +29,7 @@
                             <td>{{ $location['longitude'] }}</td>
                             <td>{{ $location['latitude'] }}</td>
                             <td>{{ $location['status'] }}</td>
+                            <td>{{ $location['expiry_date'] }}</td>
                             <td>
                                 <!-- Edit Button -->
                                 <a href="{{ route('edit', $location['id']) }}" class="btn btn-primary">Edit</a>

@@ -1,5 +1,6 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-gray-800 d-inline-flex align-items-center" id="openModalButton" data-bs-toggle="modal" data-bs-target="#newTaskModal">
+<button type="button" class="btn btn-gray-800 d-inline-flex align-items-center" id="openModalButton"
+    data-bs-toggle="modal" data-bs-target="#newTaskModal">
     New Task
 </button>
 
@@ -31,9 +32,18 @@
                         <select class="form-control" id="status" name="status" required>
                             <option value="">Select Status</option>
                             <option value="potensial">Potensial</option>
-                            <option value="tidakpotensial">Tidak Potensial</option>
+                            <option value="kurangpotensial">Kurang Potensial</option>
                         </select>
                     </div>
+                    <div class="form-group mb-3">
+                        <label for="release_date" class="form-label">Release Date</label>
+                        <input type="date" class="form-control" id="release_date" name="release_date" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="expiry_date" class="form-label">Expiry Date</label>
+                        <input type="date" class="form-control" id="expiry_date" name="expiry_date" required>
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save Task</button>
@@ -45,23 +55,23 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var form = document.getElementById('newTaskForm');
-    form.addEventListener('submit', function(event) {
-        // Check if all fields are filled
-        var isValid = true;
-        form.querySelectorAll('input, select').forEach(function(input) {
-            if (!input.value) {
-                isValid = false;
-                input.classList.add('is-invalid'); // Add Bootstrap is-invalid class to highlight the error
-            } else {
-                input.classList.remove('is-invalid');
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('newTaskForm');
+        form.addEventListener('submit', function (event) {
+            // Check if all fields are filled
+            var isValid = true;
+            form.querySelectorAll('input, select').forEach(function (input) {
+                if (!input.value) {
+                    isValid = false;
+                    input.classList.add('is-invalid'); // Add Bootstrap is-invalid class to highlight the error
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            });
+
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission if not valid
             }
         });
-
-        if (!isValid) {
-            event.preventDefault(); // Prevent form submission if not valid
-        }
     });
-});
 </script>

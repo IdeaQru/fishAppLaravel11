@@ -32,24 +32,20 @@
                 </li>
 <div>
 
-                <li class="nav-item">
-                    <a href="{{ route('login') }}"
-                        class="nav-link d-flex justify-content-between">
-                        <span>
-                            <span class="sidebar-icon">
-                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                    d="M9 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"
-
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </span>
-                            <span class="sidebar-text">Logout</span>
+<li class="nav-item">
+                <a href="{{ route('logout') }}" class="nav-link d-flex justify-content-between"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <span>
+                        <span class="sidebar-icon">
                         </span>
+                        <span class="sidebar-text">Logout</span>
+                    </span>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
 
-                    </a>
-                </li>
 
 
             </ul>

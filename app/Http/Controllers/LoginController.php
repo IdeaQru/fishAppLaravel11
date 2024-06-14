@@ -15,25 +15,25 @@ class LoginController extends Controller
      */
     public function authenticated(Request $request)
     {
-        Log::info('Attempting to login user', ['email' => $request->email]);
+        Log::info('Attempting to login user', ['name' => $request->name]);
 
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'name' => ['required'],
             'password' => ['required'],
         ]);
 
         if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
-            Log::info('Login successful', ['email' => $request->email]);
+            Log::info('Login successful', ['name' => $request->name]);
 
             return $this->handleUserRedirect($request, Auth::user());
         }
 
-        Log::warning('Login failed', ['email' => $request->email]);
+        Log::warning('Login failed', ['name' => $request->name]);
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        return back()->with([
+            'loginError' => 'The provided credentials do not match our records.',
+        ])->onlyInput('name');
     }
 
     public function index()
@@ -59,5 +59,14 @@ class LoginController extends Controller
         } else {
             return redirect()->intended('mapuser');
         }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }

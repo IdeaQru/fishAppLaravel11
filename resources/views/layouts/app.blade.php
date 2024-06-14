@@ -42,6 +42,7 @@
     <link rel="mask-icon" href="{{asset('volt/assets/img/favicon/safari-pinned-tab.svg')}}" color="#ffffff">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Sweet Alert -->
     <link type="text/css" href="{{asset('volt/assets/vendor/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet">

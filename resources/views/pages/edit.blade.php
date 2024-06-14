@@ -29,8 +29,18 @@
             <label for="status">Status:</label>
             <select class="form-control" id="status" name="status" required>
                 <option value="potensial" {{ $location->status == 'potensial' ? 'selected' : '' }}>Potensial</option>
-                <option value="tidak potensial" {{ $location->status == 'tidak potensial' ? 'selected' : '' }}>Tidak Potensial</option>
+                <option value="kurang potensial" {{ $location->status == 'kurang potensial' ? 'selected' : '' }}>Kurang Potensial</option>
             </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="release_date">Release Date:</label>
+            <input type="date" class="form-control" id="release_date" name="release_date" value="{{ $location->release_date }}" required>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="expiry_date">Expiry Date:</label>
+            <input type="date" class="form-control" id="expiry_date" name="expiry_date" value="{{ $location->expiry_date }}" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Update</button>
